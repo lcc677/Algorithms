@@ -16,20 +16,12 @@ import java.lang.reflect.Array;
 
 public class SparseArray {
 
-    public static void main(String[] args) {
-        int row = 7;
-        int column = 10;
-        int[][] region = new int[row][column];
-        region[1][2] = 1;
-        region[2][3] = 2;
-        for(int[] item : region){
-            for(int ite:item){
-                System.out.printf("%d,",ite);
-            }
-            System.out.println();
-        }
 
+    public static int[][] toSparseArray(int [][] region){
         int number = 0;
+        int row = region.length;
+        int column = region[0].length;
+
         for (int i = 0; i < row; i++) {
             for(int j=0;j<column;j++){
                 if(region[i][j] != 0){
@@ -63,7 +55,21 @@ public class SparseArray {
             }
             System.out.println();
         }
+        return target;
+    }
 
-
+    public static void main(String[] args) {
+        int row = 7;
+        int column = 10;
+        int[][] region = new int[row][column];
+        region[1][2] = 1;
+        region[2][3] = 2;
+        for(int[] item : region){
+            for(int ite:item){
+                System.out.printf("%d,",ite);
+            }
+            System.out.println();
+        }
+        int[][] target = SparseArray.toSparseArray(region);
     }
 }
