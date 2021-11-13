@@ -57,7 +57,25 @@ public class SparseArray {
         }
         return target;
     }
-
+    
+    public static int[][] parseSparseArray(int[][] sparseArray){
+    	int row = sparseArray[0][0];
+    	int column = sparseArray[0][1];
+    	int number = sparseArray[0][2];
+    	int[][] reginArray = new int[row][column];
+    	for(int i=1;i<sparseArray.length;i++) {
+    		int[] itemRow = sparseArray[i];
+    		reginArray[itemRow[0]][itemRow[1]] = itemRow[2];
+    	}
+    	for(int[] item : reginArray){
+            for(int ite:item){
+                System.out.printf("%d,",ite);
+            }
+            System.out.println();
+        }
+    	return reginArray;
+    			
+    }
     public static void main(String[] args) {
         int row = 7;
         int column = 10;
@@ -71,5 +89,6 @@ public class SparseArray {
             System.out.println();
         }
         int[][] target = SparseArray.toSparseArray(region);
+        SparseArray.parseSparseArray(target);
     }
 }
