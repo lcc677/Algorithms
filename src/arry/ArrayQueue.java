@@ -1,4 +1,4 @@
-package queue;
+package arry;
 
 public class ArrayQueue {
 	public static void main(String[] args) {
@@ -34,8 +34,8 @@ class Queue{
 	public Queue(int maxSize) {
 		this.maxSize = maxSize;
 		queue = new int[maxSize];
-		front = -1;
-		rear = -1;
+		front = -1;  // 第一个元素的前一个元素
+		rear = -1;  // rear 代表最后一个元素
 	}
 	public boolean isEmpty() {
 		return front == rear;
@@ -49,7 +49,8 @@ class Queue{
 		if(isFull()) {
 			System.out.println("队列满了！！");
 		}else {
-			queue[++rear] = item;
+			rear ++;
+			queue[rear] = item;
 		}
 	}
 	
@@ -57,7 +58,8 @@ class Queue{
 		if(isEmpty()) {
 			throw new RuntimeException("队列空了，不能取数据");
 		}else {
-			return queue[++front];
+			front++;
+			return queue[front];
 		}
 	}
 	public void showQueue() {
