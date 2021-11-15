@@ -11,14 +11,18 @@ public class DoubleLinkDemo {
         DoubleNode node2 = new DoubleNode(2,"node2");
         DoubleNode node3 = new DoubleNode(3,"node3");
         DoubleNode node4 = new DoubleNode(4,"node4");
-
         // 创建链表
         DoubleLink doubleLink = new DoubleLink();
-        doubleLink.add(node1);
-        doubleLink.add(node2);
-        doubleLink.add(node3);
-        doubleLink.add(node4);
-
+//        doubleLink.add(node1);
+//        doubleLink.add(node2);
+//        doubleLink.add(node3);
+//        doubleLink.add(node4);
+        
+	    doubleLink.addSort(node1);
+	    doubleLink.addSort(node3);
+	    doubleLink.addSort(node2);
+	    doubleLink.addSort(node4);
+	    doubleLink.addSort(node4);
         doubleLink.del(node2);
         doubleLink.showList();
 
@@ -36,7 +40,32 @@ class DoubleLink{
         temp.setNext(node);
         node.setPre(temp);
     }
-
+    
+    public void addSort(DoubleNode node) {
+    	DoubleNode temp = head;
+    	boolean flag = false;
+    	while (temp.getNext() != null) {
+			if(temp.getNext().getNo() > node.getNo()) {
+				break;
+			}
+			if(temp.getNext().getNo() == node.getNo()) {
+				flag = true;
+				break;
+			}
+			temp = temp.getNext();
+		}
+    	if(flag) {
+    		System.out.printf("链表已经存在元素%d\n", node.getNo());
+    	}else {
+    		node.setNext(temp.getNext());
+    		if(temp.getNext()!=null) {
+    			temp.getNext().setPre(node);
+    		}
+    		temp.setNext(node);
+    		node.setPre(temp);    		
+    	}
+    }
+    
     public void del(DoubleNode node){
         DoubleNode temp = head;
         while (temp!=null){
