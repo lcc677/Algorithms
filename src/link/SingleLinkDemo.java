@@ -153,8 +153,5 @@ class Node {
 	public String toString() {
 		return "Node [no=" + no + ", name=" + name +"]";
 	}
-	
-	
-	
-	
+
 }
