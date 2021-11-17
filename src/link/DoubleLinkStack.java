@@ -1,6 +1,6 @@
 package link;
 
-public class CircleLinkStack {
+public class DoubleLinkStack {
 	public static void main(String[] args) {
 		Data data1 = new Data("data1", 1);
 		Data data2 = new Data("data2", 2);
