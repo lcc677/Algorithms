@@ -3,7 +3,11 @@ package tree;
 import java.util.*;
 
 public class CreateBinaryTreeDemo {
-
+    /**
+     * 层序遍历
+     * @param rootNode
+     * @return
+     */
     public ArrayList<ArrayList<Integer>> printLevel(TreeNode rootNode) {
         Queue<TreeNode> queue = new LinkedList<>();
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
@@ -81,6 +85,22 @@ public class CreateBinaryTreeDemo {
         return result;
     }
 
+
+    public List<Integer> preorderTraversalStack(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> result = new LinkedList<>();
+        if(root == null) return result;
+        stack.push(root);
+        while (!stack.empty()){
+            TreeNode current = stack.pop();
+            result.add(current.val);
+            if(current.right!=null) stack.push(current.right);
+            if (current.left!=null) stack.push(current.left);
+        }
+        return result;
+
+
+    }
 
     /**
      * 中序和后序创建二叉树
@@ -169,6 +189,7 @@ public class CreateBinaryTreeDemo {
         cbt.printLevel(preRoot);
 
         System.out.println("前序遍历：" + cbt.preorderTraversal(preRoot));
+        System.out.println("前序遍历(通过栈)：" + cbt.preorderTraversalStack(preRoot));
         System.out.println("后续遍历" + cbt.postorderTraversal(preRoot));
         System.out.println("中序遍历" + cbt.inorderTraversal(preRoot));
 
