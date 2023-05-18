@@ -5,8 +5,8 @@ import java.util.*;
 public class CreateBinaryTreeDemo {
     /**
      * 层序遍历
-     * @param rootNode
-     * @return
+     * @param rootNode 根节点
+     * @return 层序遍历的数组
      */
     public ArrayList<ArrayList<Integer>> printLevel(TreeNode rootNode) {
         Queue<TreeNode> queue = new LinkedList<>();
